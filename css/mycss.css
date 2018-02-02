@@ -1,0 +1,91 @@
+.reveal .slides p {
+   text-align: justify;
+}
+.reveal {
+   font-size: 2em;
+}
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+   text-transform: none;
+}
+/* .reveal .slides section>* {
+   margin-left: 0;
+   margin-right: 0;
+} */
+
+image-left {
+   max-width: 450px;
+   float: left;
+}
+image-right {
+   max-width: 450px;
+   float: right;
+}
+
+.text-right ~ p, .text-right ~ ul {
+   max-width: 450px;
+   float: right; 
+}
+.text-left ~ p, .text-left ~ ul {
+   max-width: 450px;
+   float: left; 
+}
+
+.flex {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   align-items: center;
+}
+
+.flex > div, .flex > ul {
+   flex: 0 1 45%;
+   margin: auto;
+}
+
+.flex.third > div:nth-child(1), .flex.third > ul:nth-child(1) {
+   flex: 0 1 30%;
+   margin: auto;
+}
+.flex.third > ul:nth-child(2), .flex.third > div:nth-child(2) {
+   flex: 0 1 60%;
+   margin: auto;
+}
+.flex.thirdplus > div:nth-child(1), .flex.thirdplus > ul:nth-child(1) {
+   flex: 0 1 35%;
+   margin: auto;
+}
+.flex.thirdplus > ul:nth-child(2), .flex.thirdplus > div:nth-child(2) {
+   flex: 0 1 55%;
+   margin: auto;
+}
+
+.flex.fourth > div:nth-child(1), .flex.fourth > ul:nth-child(1) {
+   flex: 0 1 20%;
+   margin: auto;
+}
+.flex.fourth > ul:nth-child(2), .flex.fourth > div:nth-child(2) {
+   flex: 0 1 70%;
+   margin: auto;
+}
+.flex.fourthplus > div:nth-child(1), .flex.fourthplus > ul:nth-child(1) {
+   flex: 0 1 25%;
+   margin: auto;
+}
+.flex.fourthplus > ul:nth-child(2), .flex.fourthplus > div:nth-child(2) {
+   flex: 0 1 65%;
+   margin: auto;
+}
+
+.right > *:first-child {
+   order: 2;
+}
+
+img {
+   border: none;
+   border-radius: 5px;
+}

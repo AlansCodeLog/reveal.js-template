@@ -30,7 +30,7 @@
 	 * element. Normalizes leading tabs/whitespace.
 	 */
 	function getMarkdownFromSlide( section ) {
-
+      
 		// look for a <script> or <textarea data-template> wrapper
 		var template = section.querySelector( '[data-template]' ) || section.querySelector( 'script' );
 
@@ -48,8 +48,9 @@
 		}
 		else if( leadingWs > 1 ) {
 			text = text.replace( new RegExp('\\n? {' + leadingWs + '}', 'g'), '\n' );
-		}
-
+      }
+      //gets rid of front matter and/or import
+      text = text.replace(/---[\s\S]*?(import...*?\"|---(\r\n|\n){2,})/gm, "")
 		return text;
 
 	}

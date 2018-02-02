@@ -8,7 +8,9 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
-		<link rel="stylesheet" href="mycss.css">
+      <link rel="stylesheet" href="css/mycss.css">
+      <!-- font awesome icons for chalboard -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -25,10 +27,11 @@
 	<body>
 <div class="reveal">
 <div class="slides">
-   <section data-markdown="src/Section 1.md"
+   <section
+      data-markdown="src/Section 1.md"
       data-separator="^\r\n\r\n\r\n"
       data-separator-vertical="^\r\n\r\n"
-      data-separator-notes="^Note:"  
+      data-separator-notes="^Notes:"  
       data-charset="iso-8859-15">
    </section>
 </div>
@@ -42,11 +45,43 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+            chalkboard: { 
+               src: "src/chalkboard.json",
+               color: [ 'rgba(255,0,0,1)', 'rgba(255,255,255,1)' ],
+               pen: [ 'crosshair', 'pointer' ],
+               theme: "chalkboard",
+               toggleNotesButton: false,
+               toggleChalkboardButton:false,
+               background: [ 'rgba(0,0,0,0)' , 'plugin/chalkboard/img/blackboard.png' ],
+               size: [5,5],
+               transition: 800
+            },
+            audio: {
+               prefix: 'src/',
+               suffix: '.wav',
+               advance: -1, 		 
+               autoplay: true, 
+               defaultDuration: 1000,
+               playerOpacity: 0,
+               playerStyle: 'display:none !important;',
+            },
+            keyboard: {
+               66: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+               67: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+               46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+               8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+               68: function() { RevealChalkboard.download() },	// download recorded chalkboard drawing when 'd' is pressed
+            },
 				dependencies: [
+               { src: 'plugin/chalkboard/chalkboard.js' },
+               //for chalkboard
+               { src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
+		         { src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-               { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad() },
+               { src: 'plugin/highlight/highlight.js', async: true, callback: function() {       hljs.initHighlightingOnLoad()
+               },
                markdown: {
                   smartypants: false,
                   breaks: false,
